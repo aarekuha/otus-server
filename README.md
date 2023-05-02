@@ -49,3 +49,63 @@ OTUServer
 ```bash
     ab -n 50000 -c 100 -r http://localhost:8080
 ```
+
+Результаты нагрузочного тестирования
+------------------------------------
+```bash
+$ ab -n 50000 -c 100 -r http://localhost:8080/
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 5000 requests
+Completed 10000 requests
+Completed 15000 requests
+Completed 20000 requests
+Completed 25000 requests
+Completed 30000 requests
+Completed 35000 requests
+Completed 40000 requests
+Completed 45000 requests
+Completed 50000 requests
+Finished 50000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /
+Document Length:        25 bytes
+
+Concurrency Level:      100
+Time taken for tests:   2.773 seconds
+Complete requests:      50000
+Failed requests:        1
+   (Connect: 0, Receive: 1, Length: 0, Exceptions: 0)
+Total transferred:      9450000 bytes
+HTML transferred:       1250000 bytes
+Requests per second:    18031.92 [#/sec] (mean)
+Time per request:       5.546 [ms] (mean)
+Time per request:       0.055 [ms] (mean, across all concurrent requests)
+Transfer rate:          3328.16 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    2   4.5      2    1009
+Processing:     0    3   0.7      3       8
+Waiting:        0    2   0.7      2       7
+Total:          0    6   4.6      5    1012
+
+Percentage of the requests served within a certain time (ms)
+  50%      5
+  66%      6
+  75%      7
+  80%      7
+  90%      7
+  95%      7
+  98%      8
+  99%      8
+ 100%   1012 (longest request)
+```
